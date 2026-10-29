@@ -225,13 +225,13 @@ $('#copyAddr').onclick=function(e){e.preventDefault();var t='51, Lorong Wangsa 5
 var bg=$('#modalBg'),m=$('#modal'),pax=1;
 function close(){bg.style.display='none'}
 bg.onclick=function(e){if(e.target===bg)close()};
-function form(){m.innerHTML='<button class="x" aria-label="Close">×</button><h3 style="color:var(--red2);font-size:24px">Reserve your spot</h3><div style="color:var(--mut);font-size:14px">RM50 per person · 18+ only</div>'+
+function form(){m.innerHTML='<button class="x" aria-label="Close">×</button><h3 style="color:var(--red2);font-size:24px">Reserve your spot</h3><div style="color:var(--mut);font-size:14px">RM50 per person · 18+ only · RSVP is completed via WhatsApp</div>'+
 '<label>Your name</label><input type="text" id="nm" placeholder="Name on the guest list">'+
 '<label>Number of guests</label><div class="step"><button id="mn">−</button><b id="px">'+pax+'</b><button id="pl">+</button><span style="margin-left:auto;font-family:var(--serif);font-size:20px;color:var(--red2)" id="tot">RM'+pax*50+'</span></div>'+
 '<label>Your character</label><select id="ch"><option>Surprise me</option>'+Pn.map(function(p){return '<option>'+p[0]+'</option>'}).join('')+'</select>'+
 '<label class="chk"><input type="checkbox" id="a18"> <span>I confirm that all guests are 18 or older and will bring valid photo ID.</span></label>'+
 '<label class="chk"><input type="checkbox" id="ar"> <span>I agree to the house rules: strictly no drugs, and respect and consent at all times.</span></label>'+
-'<div class="err" id="er"></div><p><button class="btn" id="go" style="width:100%">Get my pass</button></p>';
+'<div class="err" id="er"></div><p><button class="btn" id="go" style="width:100%">Continue to WhatsApp</button></p>';
 $('.x',m).onclick=close;
 $('#mn').onclick=function(){pax=Math.max(1,pax-1);up()};$('#pl').onclick=function(){pax=Math.min(10,pax+1);up()};
 function up(){$('#px').textContent=pax;$('#tot').textContent='RM'+pax*50}
@@ -241,7 +241,7 @@ if(!$('#a18').checked||!$('#ar').checked)return $('#er').textContent='Please tic
 var ch=$('#ch').value;if(ch=='Surprise me')ch=Pn[Math.random()*Pn.length|0][0];
 var safe=n.replace(/[<>&"]/g,'');
 m.innerHTML='<button class="x" aria-label="Close">×</button><div class="ticket"><div class="eyebrow">Dark Desires · Admit '+pax+'</div><h3>'+safe+'</h3><p style="margin:6px 0">Character: <b>'+ch.replace(/[<>&]/g,'')+'</b><br>Sat 31 Oct · 8 PM till late<br>Total: RM'+pax*50+'</p><div style="font-size:12px;color:var(--mut)">Bring valid photo ID</div></div>'+
-'<p style="font-size:14px;color:var(--mut)">This pass is a preview only. To confirm your place, <b style="color:var(--cream)">scan the QR code on the official poster to RSVP</b> and complete payment.</p><button class="btn" id="dn" style="width:100%">Done</button>';
+'<p style="font-size:14px;color:var(--mut)">Almost there! Tap below to send your RSVP on WhatsApp. Your name, number of guests and character are filled in for you. Your spot is confirmed once the organiser replies with payment details.</p><a class="btn" id="wa" target="_blank" rel="noopener" style="display:block;text-align:center;margin-bottom:10px;text-decoration:none" href="https://wa.me/60176466982?text='+encodeURIComponent('Hi! I’d like to RSVP for Dark Desires: A Halloween Disaster (Sat 31 Oct, 8 PM).\nName: '+safe+'\nNo. of pax: '+pax+' (RM'+pax*50+')\nCharacter: '+ch+'\nI confirm all guests are 18+ and agree to the house rules.')+'">Send RSVP on WhatsApp</a><button class="btn ghost" id="dn" style="width:100%">Close</button>';
 $('.x',m).onclick=close;$('#dn').onclick=close}}
 $$('[data-rsvp]').forEach(function(b){b.onclick=function(){pax=1;form();bg.style.display='flex'}});
 })();
