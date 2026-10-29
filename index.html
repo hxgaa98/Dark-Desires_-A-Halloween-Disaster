@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dark Desires: A Halloween Disaster</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Playfair+Display:ital,wght@0,500;1,500&family=Allura&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0306;--bg2:#16060b;--card:#1c0a10;--red:#e0112b;--red2:#ff3b4e;--wine:#6b0f1f;--cream:#f4e3d3;--parch:#d9c3a3;--ink:#2a1a14;--mut:#b99a94;
+--serif:'Cinzel','Times New Roman',serif;--body:'Playfair Display',Georgia,serif;--script:'Allura','Brush Script MT',cursive;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-behavior:smooth;height:auto;scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--cream);font-family:var(--body);line-height:1.6;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--bg)}
+#glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:1;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(224,17,43,.22),transparent 65%);left:50%;top:30%}
+#embers{position:fixed;inset:0;z-index:0;pointer-events:none}
+main,header,footer,section{position:relative;z-index:2}
+h1,h2,h3{font-family:var(--serif);margin:0}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(10,3,6,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--wine)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;height:56px;gap:12px}
+nav b{font-family:var(--serif);letter-spacing:.15em;color:var(--red2);font-size:14px}
+nav div{display:flex;gap:18px;overflow-x:auto}
+nav a{color:var(--cream);text-decoration:none;font-family:var(--serif);font-size:12px;letter-spacing:.15em;text-transform:uppercase;white-space:nowrap}
+nav a:hover{color:var(--red2)}
+.btn{display:inline-block;font-family:var(--serif);letter-spacing:.2em;text-transform:uppercase;font-size:13px;font-weight:700;color:#fff;background:linear-gradient(180deg,var(--red2),#a8081c);border:1px solid #ff7a88;padding:14px 28px;border-radius:2px;cursor:pointer;box-shadow:0 0 24px rgba(224,17,43,.5);transition:.25s}
+.btn:hover{transform:translateY(-2px) scale(1.03);box-shadow:0 0 40px rgba(255,59,78,.8)}
+.btn.ghost{background:transparent;box-shadow:none;color:var(--cream)}
+.hero{min-height:92vh;display:flex;align-items:center;text-align:center;background:radial-gradient(ellipse at 50% 20%,rgba(107,15,31,.55),transparent 60%)}
+.hero .wrap{padding-top:50px;padding-bottom:50px}
+.eyebrow{font-family:var(--serif);letter-spacing:.35em;font-size:12px;color:var(--parch);text-transform:uppercase}
+.script{font-family:var(--script);color:var(--red2);font-size:32px}
+.title{font-size:clamp(52px,12vw,128px);line-height:.95;color:var(--cream);text-shadow:0 0 12px var(--red),0 0 40px rgba(224,17,43,.7);margin:14px 0 6px;animation:flick 5s infinite}
+@keyframes flick{0%,92%,100%{opacity:1}93%{opacity:.7}94%{opacity:1}96%{opacity:.6}97%{opacity:1}}
+.sub{font-family:var(--serif);font-style:italic;font-weight:700;font-size:clamp(24px,5vw,46px);color:var(--red2);transform:skewX(-8deg);text-shadow:0 0 18px rgba(224,17,43,.6)}
+.tag{font-family:var(--serif);letter-spacing:.25em;font-size:clamp(11px,2.2vw,16px);margin:22px 0}
+.date{display:inline-flex;align-items:center;gap:18px;border:1px solid var(--wine);padding:10px 24px;margin:10px 0 26px;background:rgba(0,0,0,.4)}
+.date .d{font-family:var(--serif);font-size:56px;font-weight:700;color:var(--red);line-height:1}
+.date small{display:block;font-family:var(--serif);letter-spacing:.2em;font-size:12px;text-align:left;color:var(--parch)}
+#count{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:6px 0 30px}
+#count div{width:78px;padding:10px 0;background:var(--card);border:1px solid var(--wine);border-radius:3px}
+#count b{display:block;font-family:var(--serif);font-size:30px;color:var(--red2)}
+#count span{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);font-family:var(--serif)}
+section{padding:70px 0}
+.sec-h{text-align:center;margin-bottom:38px}
+.sec-h h2{font-size:clamp(28px,5vw,44px);text-shadow:0 0 16px rgba(224,17,43,.5)}
+.sec-h p{color:var(--mut);margin:8px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.flip{perspective:900px;height:200px;cursor:pointer}
+.flip i{position:absolute;inset:0;transition:transform .6s;transform-style:preserve-3d;display:block}
+.flip.on i{transform:rotateY(180deg)}
+.flip{position:relative}
+.flip u,.flip s{position:absolute;inset:0;backface-visibility:hidden;text-decoration:none;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;border:1px solid var(--wine);border-radius:3px}
+.flip u{background:linear-gradient(160deg,#2a0a12,#12040a)}
+.flip u em{font-style:normal;font-size:44px}
+.flip u b{font-family:var(--serif);letter-spacing:.18em;text-transform:uppercase;margin-top:8px}
+.flip u small{color:var(--mut);font-size:12px;margin-top:6px}
+.flip s{transform:rotateY(180deg);background:var(--parch);color:var(--ink);font-size:15px}
+.flip:hover u{box-shadow:0 0 26px rgba(224,17,43,.4)}
+.parch{background:var(--parch);color:var(--ink);padding:34px;border-radius:3px;box-shadow:0 0 40px rgba(0,0,0,.6);background-image:radial-gradient(circle at 10% 10%,rgba(120,80,40,.25),transparent 40%),radial-gradient(circle at 90% 90%,rgba(120,80,40,.25),transparent 40%)}
+.parch h3{font-size:26px;color:#4a0d17}
+.parch h3 span{color:var(--red)}
+#persona{font-family:var(--serif);font-size:30px;color:var(--red);min-height:40px;margin:18px 0 4px;font-weight:700}
+#personaD{min-height:52px}
+.tabs{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{font-family:var(--serif);letter-spacing:.15em;text-transform:uppercase;font-size:12px;padding:11px 20px;background:transparent;color:var(--cream);border:1px solid var(--wine);cursor:pointer;transition:.2s}
+.tabs button.on,.tabs button:hover{background:var(--red);border-color:var(--red2)}
+.panel{display:none;max-width:760px;margin:0 auto}
+.panel.on{display:block;animation:fade .4s}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.rule{display:flex;gap:14px;align-items:flex-start;padding:16px 18px;margin-bottom:10px;background:var(--card);border-left:3px solid var(--red);border-radius:2px;cursor:pointer;transition:.2s}
+.rule:hover{background:#26101a;transform:translateX(4px)}
+.rule em{font-style:normal;font-size:24px}
+.rule b{font-family:var(--serif);letter-spacing:.06em}
+.rule p{margin:4px 0 0;color:var(--mut);font-size:15px;max-height:0;overflow:hidden;transition:max-height .35s}
+.rule.on p{max-height:140px}
+.rule.hot{border-left-color:#ff0;background:#2a0a0f}
+.info{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+.info div{padding:24px;border:1px solid var(--wine);background:rgba(28,10,16,.8);text-align:center}
+.info em{font-style:normal;font-size:30px}
+.info h3{font-size:15px;letter-spacing:.2em;color:var(--red2);margin:8px 0}
+.info a{color:var(--cream)}
+#modalBg,#gate{position:fixed;inset:0;z-index:100;background:rgba(5,1,3,.92);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+#gate{display:flex;z-index:120;background:radial-gradient(circle,#2a0610,#050103);text-align:center}
+.box{max-width:460px;width:100%;background:var(--card);border:1px solid var(--red);padding:30px;box-shadow:0 0 60px rgba(224,17,43,.4);position:relative}
+.box label{display:block;font-family:var(--serif);font-size:12px;letter-spacing:.15em;text-transform:uppercase;margin:14px 0 5px;color:var(--parch)}
+.box input[type=text],.box select{width:100%;padding:12px;background:#0a0306;border:1px solid var(--wine);color:var(--cream);font-size:16px;font-family:var(--body)}
+.step{display:flex;align-items:center;gap:14px}
+.step button{width:42px;height:42px;font-size:22px;background:var(--wine);color:#fff;border:0;cursor:pointer}
+.step b{font-size:26px;font-family:var(--serif);min-width:30px;text-align:center}
+.chk{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-size:14px;color:var(--mut)}
+.x{position:absolute;right:12px;top:8px;background:none;border:0;color:var(--cream);font-size:28px;cursor:pointer}
+.ticket{border:2px dashed var(--red2);padding:20px;text-align:center;margin-top:10px}
+.ticket h3{font-size:22px;color:var(--red2)}
+.err{color:#ff7a88;font-size:14px;min-height:20px;margin-top:8px}
+footer{text-align:center;padding:40px 20px 60px;color:var(--mut);font-size:14px;border-top:1px solid var(--wine)}
+footer .tags{font-family:var(--serif);letter-spacing:.2em;font-size:12px;color:#7fb4e6;margin-bottom:12px}
+.reveal{opacity:0;transform:translateY(26px);transition:1s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-color-scheme:dark){:root{color-scheme:dark}}
+@media (prefers-reduced-motion:reduce){.title{animation:none}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="gate"><div class="box">
+<div class="eyebrow">Closed private event</div>
+<h2 style="font-size:34px;margin:12px 0;color:var(--red2)">18+ Only</h2>
+<p>This event is strictly for adults. By entering, you confirm that you are 18 years or older.</p>
+<p><button class="btn" id="enter">I’m 18 or older</button></p>
+<p><a href="#" id="leave" style="color:var(--mut);font-size:14px">I’m under 18</a></p>
+<div class="err" id="gerr"></div>
+</div></div>
+
+<canvas id="embers"></canvas><div id="glow"></div>
+
+<nav><div class="wrap"><b>DARK DESIRES</b><div><a href="#experiences">Experiences</a><a href="#character">Character</a><a href="#rules">House Rules</a><a href="#details">Details</a></div></div></nav>
+
+<header class="hero"><div class="wrap">
+<div class="eyebrow">You’re invited to a closed private event</div>
+<div class="script">Strictly by invitation only ♥</div>
+<h1 class="title">Dark Desires</h1>
+<div class="sub">A Halloween Disaster</div>
+<div class="tag">A NIGHT OF TEMPTATION, MUSIC &amp; MISCHIEF</div>
+<div class="date"><span class="d">31</span><small>SATURDAY<br>OCTOBER 2026<br><span style="color:var(--red2)">8 PM TILL LATE</span></small></div>
+<div id="count"></div>
+<button class="btn" data-rsvp>RSVP Now</button> &nbsp; <a class="btn ghost" href="#rules">House Rules</a>
+</div></header>
+
+<section id="experiences"><div class="wrap">
+<div class="sec-h reveal"><h2>One Night. Six Experiences.</h2><p>Tap a card to peek behind the curtain.</p></div>
+<div class="grid reveal" id="exp"></div>
+</div></section>
+
+<section id="character"><div class="wrap reveal">
+<div class="parch" style="text-align:center">
+<h3>Choose your character. Own your look. <span>Make it sexy.</span></h3>
+<p>Leave ordinary behind and embrace your alter ego. Not sure who to be? Let the night decide.</p>
+<div id="persona">?</div><p id="personaD">Tap the button to summon a character.</p>
+<button class="btn" id="spin">Summon my character</button>
+<p style="font-size:14px;margin-top:18px">Costume competition on the night. Seductive · Creative · Glamorous · Unforgettable</p>
+</div></div></section>
+
+<section id="rules"><div class="wrap">
+<div class="sec-h reveal"><h2>House Rules</h2><p>Tap any rule to read more. Everyone’s night depends on them.</p></div>
+<div class="tabs"><button class="on" data-t="p1">Entry (18+)</button><button data-t="p2">Zero Tolerance</button><button data-t="p3">Drinks</button><button data-t="p4">Conduct</button></div>
+<div class="panel on" id="p1">
+<div class="rule"><em>🔞</em><div><b>18+ only</b><p>Guests must be 18 or older. Bring a valid photo ID (MyKad, driving licence or passport). No ID, no entry, and no refund.</p></div></div>
+<div class="rule"><em>💌</em><div><b>Closed private event, by invitation</b><p>Entry is for invited guests who have RSVP’d and paid. Plus-ones must also RSVP. Walk-ins will not be admitted.</p></div></div>
+<div class="rule"><em>🎭</em><div><b>Costumes encouraged</b><p>Dress to impress, but keep it tasteful. Masks are welcome, though you may be asked to lift yours at the door for ID checks.</p></div></div>
+</div>
+<div class="panel" id="p2">
+<div class="rule hot"><em>🚫</em><div><b>STRICTLY NO DRUGS</b><p>No illegal drugs or substances of any kind, whether consumed, carried or shared. Offenders will be removed immediately and may be reported to the authorities.</p></div></div>
+<div class="rule"><em>🗡️</em><div><b>No weapons, real or realistic</b><p>Costume props must be clearly fake and harmless. Anything that looks like a real weapon will be held at the door.</p></div></div>
+<div class="rule"><em>🔥</em><div><b>No open flames or fireworks</b><p>Please leave lighters, sparklers and fire props outside. Candles are handled by the host.</p></div></div>
+</div>
+<div class="panel" id="p3">
+<div class="rule" style="border-left-color:#4ade80"><em>🍾</em><div><b>Outside drinks are allowed</b><p>Bring your own favourites to share or enjoy. Please keep them in sealed or original containers. The bar and cocktails are provided as well.</p></div></div>
+<div class="rule"><em>🔒</em><div><b>Know your limits</b><p>Drink responsibly. Never leave your drink unattended, and never accept a drink you did not see being poured.</p></div></div>
+<div class="rule"><em>🚖</em><div><b>Do not drink and drive</b><p>Arrange a Grab or e-hailing ride, or a designated driver. Hosts may refuse entry or ask guests to stop drinking if they’re unsafe.</p></div></div>
+</div>
+<div class="panel" id="p4">
+<div class="rule"><em>🤝</em><div><b>Consent is everything</b><p>Flirt freely, but only with a yes. Harassment, unwanted touching or pressure leads to immediate removal.</p></div></div>
+<div class="rule"><em>📵</em><div><b>Ask before you photograph</b><p>Do not photograph or film guests without their permission, and do not post anyone who asks you not to.</p></div></div>
+<div class="rule"><em>🛡️</em><div><b>Right of admission reserved</b><p>The hosts may refuse entry or ask any guest to leave to keep the event safe and fun for everyone.</p></div></div>
+</div>
+</div></section>
+
+<section id="details"><div class="wrap">
+<div class="sec-h reveal"><h2>The Details</h2></div>
+<div class="info reveal">
+<div><em>📍</em><h3>VENUE</h3>51, Lorong Wangsa 5B,<br>Bukit Antarabangsa,<br>68000 Ampang, Selangor<br><br><a href="https://www.google.com/maps/search/?api=1&query=51+Lorong+Wangsa+5B+Bukit+Antarabangsa+68000+Ampang+Selangor" target="_blank" rel="noopener">Open in Maps</a> · <a href="#" id="copyAddr">Copy address</a></div>
+<div><em>🎟️</em><h3>PRICE</h3><b style="font-size:28px;font-family:var(--serif)">RM50 / pax</b><br>Will be added to the community after payment.</div>
+<div><em>🔞</em><h3>18+ ONLY</h3>This is a closed private event. Valid ID required.</div>
+</div>
+<p style="text-align:center;margin-top:40px"><button class="btn" data-rsvp>Reserve My Spot</button></p>
+</div></section>
+
+<footer><div class="tags">MUSIC • DRINKS • GAMES • COSTUME COMPETITION • DANCE • NEW CONNECTIONS</div>
+Dark Desires: A Halloween Disaster · Saturday, 31 October 2026 · 8 PM till late<br>Please drink responsibly. 18+ only.</footer>
+
+<div id="modalBg"><div class="box" id="modal"></div></div>
+
+<script>
+(function(){
+var $=function(s,r){return (r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+/* age gate */
+$('#enter').onclick=function(){$('#gate').style.display='none'};
+$('#leave').onclick=function(e){e.preventDefault();$('#gerr').textContent='Sorry, this event is for guests aged 18 and above only.'};
+/* glow follows pointer */
+var g=$('#glow');window.addEventListener('pointermove',function(e){g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+/* embers */
+var c=$('#embers'),x=c.getContext('2d'),P=[],W,H;
+function rs(){W=c.width=innerWidth;H=c.height=innerHeight}rs();addEventListener('resize',rs);
+for(var i=0;i<60;i++)P.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*2+.5,s:Math.random()*.6+.2,d:Math.random()*6});
+(function loop(t){x.clearRect(0,0,W,H);P.forEach(function(p){p.y-=p.s;p.x+=Math.sin(t/900+p.d)*.4;if(p.y<-5){p.y=H+5;p.x=Math.random()*W}
+x.beginPath();x.fillStyle='rgba(255,'+(60+p.r*25|0)+',70,'+(.25+p.r/5)+')';x.arc(p.x,p.y,p.r,0,6.28);x.fill()});requestAnimationFrame(loop)})(0);
+/* countdown (Malaysia time, UTC+8) */
+var target=new Date('2026-10-31T20:00:00+08:00').getTime(),cd=$('#count');
+function tick(){var d=target-Date.now();if(d<=0){cd.innerHTML='<div style="width:auto;padding:12px 28px"><b>The night has begun 🕯️</b></div>';return}
+var v=[Math.floor(d/864e5),Math.floor(d%864e5/36e5),Math.floor(d%36e5/6e4),Math.floor(d%6e4/1e3)],l=['Days','Hours','Mins','Secs'];
+cd.innerHTML=v.map(function(n,i){return '<div><b>'+(n<10?'0':'')+n+'</b><span>'+l[i]+'</span></div>'}).join('')}
+tick();setInterval(tick,1000);
+/* experiences */
+var E=[['🍸','The Bar','Drinks & cocktails','Signature cocktails and a stocked bar. Outside drinks are welcome too.'],
+['🎲','The Games','Games & mischief','Dice, cards and playful dares. Fortune favours the bold.'],
+['🎧','The DJ','DJ & dance','A DJ spinning till late to keep the floor alive.'],
+['🎭','Dress to Impress','Costume competition','Show off your alter ego. The best look wins the crowd.'],
+['💃','Dance All Night','Lively social vibe','Lights low, music loud. Dance until the candles burn down.'],
+['🥂','Meet Like-Minded People','New connections','An after-dark atmosphere to meet fun, like-minded people.']];
+$('#exp').innerHTML=E.map(function(e){return '<div class="flip"><i><u><em>'+e[0]+'</em><b>'+e[1]+'</b><small>'+e[2]+'</small></u><s>'+e[3]+'</s></i></div>'}).join('');
+$$('.flip').forEach(function(f){f.onclick=function(){f.classList.toggle('on')}});
+/* persona */
+var Pn=[['The Vampire Seductress','Velvet, lace and a bite. Deep reds and dramatic collars.'],['Masked Phantom','Mystery behind a lace or Venetian mask. Never reveal too much.'],['The Fallen Angel','Black wings, dark halo, a glint of mischief.'],['Gothic Royalty','A crown, a corset, a cape. Rule the room.'],['The Red Queen','Cards, crowns and power. Off with their heads.'],['Midnight Witch','A hat, a potion and a spell for every guest.'],['Dark Cabaret Star','Sequins, gloves and a stage presence.'],['The Devil’s Favourite','Horns, a red suit and a wicked grin.'],['Haunted Ghost Bride','Veil, pale makeup and a lingering stare.'],['Noir Detective','Trench coat, shadows and secrets.']];
+var last=-1;$('#spin').onclick=function(){var n=0,b=this,iv=setInterval(function(){$('#persona').textContent=Pn[Math.random()*Pn.length|0][0];if(++n>12){clearInterval(iv);var k;do{k=Math.random()*Pn.length|0}while(k==last);last=k;$('#persona').textContent=Pn[k][0];$('#personaD').textContent=Pn[k][1];b.textContent='Summon another'}},70)};
+/* tabs & rules */
+$$('.tabs button').forEach(function(b){b.onclick=function(){$$('.tabs button').forEach(function(o){o.classList.remove('on')});$$('.panel').forEach(function(p){p.classList.remove('on')});b.classList.add('on');$('#'+b.dataset.t).classList.add('on')}});
+$$('.rule').forEach(function(r){r.onclick=function(){r.classList.toggle('on')}});
+/* reveal */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in')})},{threshold:.1});$$('.reveal').forEach(function(r){io.observe(r)});
+/* copy */
+$('#copyAddr').onclick=function(e){e.preventDefault();var t='51, Lorong Wangsa 5B, Bukit Antarabangsa, 68000 Ampang, Selangor',a=this;try{navigator.clipboard.writeText(t).then(function(){a.textContent='Copied ✓'})}catch(_){a.textContent='Copy manually'}};
+/* RSVP */
+var bg=$('#modalBg'),m=$('#modal'),pax=1;
+function close(){bg.style.display='none'}
+bg.onclick=function(e){if(e.target===bg)close()};
+function form(){m.innerHTML='<button class="x" aria-label="Close">×</button><h3 style="color:var(--red2);font-size:24px">Reserve your spot</h3><div style="color:var(--mut);font-size:14px">RM50 per person · 18+ only</div>'+
+'<label>Your name</label><input type="text" id="nm" placeholder="Name on the guest list">'+
+'<label>Number of guests</label><div class="step"><button id="mn">−</button><b id="px">'+pax+'</b><button id="pl">+</button><span style="margin-left:auto;font-family:var(--serif);font-size:20px;color:var(--red2)" id="tot">RM'+pax*50+'</span></div>'+
+'<label>Your character</label><select id="ch"><option>Surprise me</option>'+Pn.map(function(p){return '<option>'+p[0]+'</option>'}).join('')+'</select>'+
+'<label class="chk"><input type="checkbox" id="a18"> <span>I confirm that all guests are 18 or older and will bring valid photo ID.</span></label>'+
+'<label class="chk"><input type="checkbox" id="ar"> <span>I agree to the house rules: strictly no drugs, and respect and consent at all times.</span></label>'+
+'<div class="err" id="er"></div><p><button class="btn" id="go" style="width:100%">Get my pass</button></p>';
+$('.x',m).onclick=close;
+$('#mn').onclick=function(){pax=Math.max(1,pax-1);up()};$('#pl').onclick=function(){pax=Math.min(10,pax+1);up()};
+function up(){$('#px').textContent=pax;$('#tot').textContent='RM'+pax*50}
+$('#go').onclick=function(){var n=$('#nm').value.trim();
+if(!n)return $('#er').textContent='Please enter your name.';
+if(!$('#a18').checked||!$('#ar').checked)return $('#er').textContent='Please tick both confirmations to continue.';
+var ch=$('#ch').value;if(ch=='Surprise me')ch=Pn[Math.random()*Pn.length|0][0];
+var safe=n.replace(/[<>&"]/g,'');
+m.innerHTML='<button class="x" aria-label="Close">×</button><div class="ticket"><div class="eyebrow">Dark Desires · Admit '+pax+'</div><h3>'+safe+'</h3><p style="margin:6px 0">Character: <b>'+ch.replace(/[<>&]/g,'')+'</b><br>Sat 31 Oct · 8 PM till late<br>Total: RM'+pax*50+'</p><div style="font-size:12px;color:var(--mut)">Bring valid photo ID</div></div>'+
+'<p style="font-size:14px;color:var(--mut)">This pass is a preview only. To confirm your place, <b style="color:var(--cream)">scan the QR code on the official poster to RSVP</b> and complete payment.</p><button class="btn" id="dn" style="width:100%">Done</button>';
+$('.x',m).onclick=close;$('#dn').onclick=close}}
+$$('[data-rsvp]').forEach(function(b){b.onclick=function(){pax=1;form();bg.style.display='flex'}});
+})();
+</script>
+</body>
+</html>
